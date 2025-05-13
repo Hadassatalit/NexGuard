@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - NexGuard</title>
+
+
+<link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+
+  <div class="login-container">
+
+    <h2>Entrar</h2>
+    
+    <div class="social-btn">
+      <img src="https://img.icons8.com/color/20/google-logo.png" />
+      Use sua conta Google
+    </div>
+
+    <div class="social-btn">
+      <img src="https://img.icons8.com/color/20/facebook-new.png" />
+      Use sua conta Facebook
+    </div>
+
+    <div class="social-btn">
+      <img src="https://img.icons8.com/ios-filled/20/mac-os.png" />
+      Use sua conta Apple
+    </div>
+
+    <div class="divider"><span>OU</span></div>
+
+    <div class="form-group">
+      <label for="username">Nome de usuário</label>
+      <input type="text" id="username" name="username" placeholder="Digite seu nome de usuário" />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Senha</label>
+      <input type="password" id="password" name="password" placeholder="Digite sua senha" />
+    </div>
+
+    <div class="remember-container">
+      <label><input type="checkbox" name="remember" /> Lembrar dispositivo?</label>
+      <a href="#">Esqueceu sua senha?</a>
+    </div>
+
+    <button class="login-btn" id="loginBtn">Entrar</button>
+
+  </div>
+
+  <script>
+    const btn = document.getElementById("loginBtn");
+
+    btn.addEventListener("click", async () => {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (!username || !password) {
+        alert("Preencha usuário e senha.");
+        return;
+      }
+
+      const res = await fetch("/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        alert("Login bem-sucedido!");
+      } else {
+        alert("Usuário ou senha incorretos.");
+      }
+    });
+  </script>
+
+</body>
+
+</html>
+
+
+
