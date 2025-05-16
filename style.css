@@ -39,7 +39,6 @@ body {
   margin-bottom: 12px;
   cursor: pointer;
   background-color: #fff;
-  font-size: 15px;
 }
 
 .social-btn img {
@@ -65,6 +64,7 @@ body {
 .divider::before {
   left: 0;
 }
+
 .divider::after {
   right: 0;
 }
@@ -95,6 +95,25 @@ body {
   border-radius: 6px;
 }
 
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  flex: 1;
+  padding-right: 40px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #888;
+}
+
 .remember-container {
   display: flex;
   justify-content: space-between;
@@ -111,13 +130,13 @@ body {
 
 .login-btn {
   width: 100%;
-  background: #444;
+  background: #ccc;
   color: #fff;
   border: none;
   padding: 12px;
   border-radius: 24px;
   font-size: 16px;
-  cursor: pointer;
+  cursor: not-allowed;
 }
 
 @media (max-width: 480px) {
@@ -133,4 +152,7 @@ body {
   .social-btn {
     font-size: 14px;
   }
+
+  .error-msg {
+  margin-bottom: 12px;
 }
